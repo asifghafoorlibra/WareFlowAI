@@ -124,7 +124,7 @@ $(document).ready(function(){
 				search: ' ',
 				sLengthMenu: '_MENU_',
 				searchPlaceholder: "Search",
-				sLengthMenu: 'Row Per Page _MENU_ Entries',
+				 
 				info: "_START_ - _END_ of _TOTAL_ items",
 				paginate: {
 					next: ' <i class=" fa fa-angle-right"></i>',
