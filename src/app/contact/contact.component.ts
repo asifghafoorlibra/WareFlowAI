@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit  } from '@angular/core';
 
 @Component({
   selector: 'app-contact.component',
@@ -6,6 +6,12 @@ import { Component } from '@angular/core';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
-export class ContactComponent {
+export class ContactComponent implements AfterViewInit {
+ngAfterViewInit(): void {
+    const script = document.createElement('script');
+    script.src = 'assets/plugins/apexchart/chart-data.js';
+    script.async = true;
+    document.body.appendChild(script);
+  }
 
 }
