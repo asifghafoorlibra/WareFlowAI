@@ -34,7 +34,7 @@ let themesettings = `
                                     <input type="radio" name="LayoutTheme" id="defaultLayout" value="default" checked>
                                     <label for="defaultLayout">
                                         <span class="d-block mb-2 layout-img">
-                                            <img src="assets/img/theme/default.svg" alt="img">
+                                            <img src="src/assets/img/theme/default.svg" alt="img">
                                         </span>                                     
                                         <span class="layout-type">Default</span>
                                     </label>
