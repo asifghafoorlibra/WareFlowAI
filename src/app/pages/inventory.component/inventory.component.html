@@ -1,0 +1,555 @@
+<div class="content">
+				<div class="page-header transfer">
+					<div class="add-item d-flex">
+						<div class="page-title">
+							<h4 class="fw-bold">Purchase</h4>
+							<h6>Manage your purchases</h6>
+						</div>
+					</div>
+					<ul class="table-top-head">
+						<li>
+							<a data-bs-toggle="tooltip" data-bs-placement="top" title="Pdf"><img
+									src="assets/img/icons/pdf.svg" alt="img"></a>
+						</li>
+						<li>
+							<a data-bs-toggle="tooltip" data-bs-placement="top" title="Excel"><img
+									src="assets/img/icons/excel.svg" alt="img"></a>
+						</li>
+						<li>
+							<a data-bs-toggle="tooltip" data-bs-placement="top" title="Refresh"><i
+									data-feather="rotate-ccw" class="feather-rotate-ccw"></i></a>
+						</li>		
+						<li>
+							<a data-bs-toggle="tooltip" data-bs-placement="top" title="Collapse" id="collapse-header"><i class="ti ti-chevron-up"></i></a>
+						</li>
+					</ul>
+					<div class="d-flex purchase-pg-btn">
+						<div class="page-btn">
+							<a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-purchase"><i
+									data-feather="plus-circle" class="me-1"></i>Add Purchase</a>
+						</div>
+						<div class="page-btn import">
+							<a href="#" class="btn btn-secondary color" data-bs-toggle="modal" data-bs-target="#view-notes"><i
+									data-feather="download" class="me-2"></i>Import Purchase</a>
+						</div>
+					</div>
+					
+				</div>
+
+				<div class="card">
+					<div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+                        <div class="input-group mb-3 w-50">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            <input type="text" id="customSearch" class="form-control border-start-0" placeholder="Search...">
+                        </div>
+
+						<div class="d-flex table-dropdown my-xl-auto right-content align-items-center flex-wrap row-gap-3">
+							<div class="dropdown">
+								<a href="javascript:void(0);" class="dropdown-toggle btn btn-white btn-md d-inline-flex align-items-center" data-bs-toggle="dropdown">
+								Payment Status
+								</a>
+								<ul class="dropdown-menu  dropdown-menu-end p-3">
+									<li>
+										<a href="javascript:void(0);" class="dropdown-item rounded-1">Paid</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" class="dropdown-item rounded-1">Unpaid</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" class="dropdown-item rounded-1">Overdue</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="card-body p-0">
+						<div class="table-responsive">
+							<table id="inventoryTable" class="table datatable">
+								<thead class="thead-light">
+									<tr>
+  <!-- Select All Checkbox -->
+  <th class="no-sort text-center align-middle">
+    <label class="form-check">
+      <input type="checkbox" id="select-all" class="form-check-input">
+      <span class="form-check-label"></span>
+    </label>
+  </th>
+
+  <!-- Forecasting-Relevant Fields -->
+  <th class="align-middle">Item Name</th>
+  <th class="align-middle">SKU</th>
+  <th class="align-middle">Category</th>
+  <th class="align-middle text-end">Current Stock</th>
+  <th class="align-middle text-end">Historical Sales</th>
+  <th class="align-middle text-end">Lead Time (Days)</th>
+  <th class="align-middle text-end">Safety Stock</th>
+  <th class="align-middle text-end">Forecasted Demand</th>
+  <th class="align-middle text-end">Reorder Point</th>
+
+  <!-- Actions Column -->
+  <th class="no-sort text-center align-middle">Actions</th>
+</tr>
+
+								</thead>
+								<tbody>
+									<tr>
+  <!-- Row Checkbox -->
+  <td class="text-center align-middle">
+    <label class="form-check">
+      <input type="checkbox" class="form-check-input">
+      <span class="form-check-label"></span>
+    </label>
+  </td>
+
+  <!-- Forecasting-Relevant Data -->
+  <td class="align-middle">LED Bulb 12W</td>
+  <td class="align-middle">SKU-LED12W</td>
+  <td class="align-middle">Lighting</td>
+  <td class="align-middle text-end">120</td>
+  <td class="align-middle text-end">[15, 18, 20, 22]</td>
+  <td class="align-middle text-end">5</td>
+  <td class="align-middle text-end">30</td>
+  <td class="align-middle text-end">26</td>
+  <td class="align-middle text-end">45</td>
+
+  <!-- Actions -->
+  <td class="text-center align-middle action-table-data">
+    <div class="edit-delete-action">
+      <!-- View Icon -->
+      <a class="me-2 p-2" href="javascript:void(0);">
+        <i class="bi bi-eye"></i>
+      </a>
+
+      <!-- Edit Icon -->
+      <a class="me-2 p-2" data-bs-toggle="modal" data-bs-target="#edit-item">
+        <i class="bi bi-pencil-square"></i>
+      </a>
+
+      <!-- Delete Icon -->
+      <a class="p-2" data-bs-toggle="modal" data-bs-target="#delete-modal" href="javascript:void(0);">
+        <i class="bi bi-trash"></i>
+      </a>
+    </div>
+  </td>
+</tr>
+
+								<tr>
+  <!-- Row Checkbox -->
+  <td class="text-center align-middle">
+    <label class="form-check">
+      <input type="checkbox" class="form-check-input">
+      <span class="form-check-label"></span>
+    </label>
+  </td>
+
+  <!-- Forecasting-Relevant Data -->
+  <td class="align-middle">LED Bulb 12W</td>
+  <td class="align-middle">SKU-LED12W</td>
+  <td class="align-middle">Lighting</td>
+  <td class="align-middle text-end">120</td>
+  <td class="align-middle text-end">[15, 18, 20, 22]</td>
+  <td class="align-middle text-end">5</td>
+  <td class="align-middle text-end">30</td>
+  <td class="align-middle text-end">26</td>
+  <td class="align-middle text-end">45</td>
+
+  <!-- Actions -->
+  <td class="text-center align-middle action-table-data">
+    <div class="edit-delete-action">
+      <!-- View Icon -->
+      <a class="me-2 p-2" href="javascript:void(0);">
+        <i class="bi bi-eye"></i>
+      </a>
+
+      <!-- Edit Icon -->
+      <a class="me-2 p-2" data-bs-toggle="modal" data-bs-target="#edit-item">
+        <i class="bi bi-pencil-square"></i>
+      </a>
+
+      <!-- Delete Icon -->
+      <a class="p-2" data-bs-toggle="modal" data-bs-target="#delete-modal" href="javascript:void(0);">
+        <i class="bi bi-trash"></i>
+      </a>
+    </div>
+  </td>
+</tr>
+
+									<tr>
+  <!-- Row Checkbox -->
+  <td class="text-center align-middle">
+    <label class="form-check">
+      <input type="checkbox" class="form-check-input">
+      <span class="form-check-label"></span>
+    </label>
+  </td>
+
+  <!-- Forecasting-Relevant Data -->
+  <td class="align-middle">LED Bulb 12W</td>
+  <td class="align-middle">SKU-LED12W</td>
+  <td class="align-middle">Lighting</td>
+  <td class="align-middle text-end">120</td>
+  <td class="align-middle text-end">[15, 18, 20, 22]</td>
+  <td class="align-middle text-end">5</td>
+  <td class="align-middle text-end">30</td>
+  <td class="align-middle text-end">26</td>
+  <td class="align-middle text-end">45</td>
+
+  <!-- Actions -->
+  <td class="text-center align-middle action-table-data">
+    <div class="edit-delete-action">
+      <!-- View Icon -->
+      <a class="me-2 p-2" href="javascript:void(0);">
+        <i class="bi bi-eye"></i>
+      </a>
+
+      <!-- Edit Icon -->
+      <a class="me-2 p-2" data-bs-toggle="modal" data-bs-target="#edit-item">
+        <i class="bi bi-pencil-square"></i>
+      </a>
+
+      <!-- Delete Icon -->
+      <a class="p-2" data-bs-toggle="modal" data-bs-target="#delete-modal" href="javascript:void(0);">
+        <i class="bi bi-trash"></i>
+      </a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <!-- Row Checkbox -->
+  <td class="text-center align-middle">
+    <label class="form-check">
+      <input type="checkbox" class="form-check-input">
+      <span class="form-check-label"></span>
+    </label>
+  </td>
+
+  <!-- Forecasting-Relevant Data -->
+  <td class="align-middle">LED Bulb 12W</td>
+  <td class="align-middle">SKU-LED12W</td>
+  <td class="align-middle">Lighting</td>
+  <td class="align-middle text-end">120</td>
+  <td class="align-middle text-end">[15, 18, 20, 22]</td>
+  <td class="align-middle text-end">5</td>
+  <td class="align-middle text-end">30</td>
+  <td class="align-middle text-end">26</td>
+  <td class="align-middle text-end">45</td>
+
+  <!-- Actions -->
+  <td class="text-center align-middle action-table-data">
+    <div class="edit-delete-action">
+      <!-- View Icon -->
+      <a class="me-2 p-2" href="javascript:void(0);">
+        <i class="bi bi-eye"></i>
+      </a>
+
+      <!-- Edit Icon -->
+      <a class="me-2 p-2" data-bs-toggle="modal" data-bs-target="#edit-item">
+        <i class="bi bi-pencil-square"></i>
+      </a>
+
+      <!-- Delete Icon -->
+      <a class="p-2" data-bs-toggle="modal" data-bs-target="#delete-modal" href="javascript:void(0);">
+        <i class="bi bi-trash"></i>
+      </a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <!-- Row Checkbox -->
+  <td class="text-center align-middle">
+    <label class="form-check">
+      <input type="checkbox" class="form-check-input">
+      <span class="form-check-label"></span>
+    </label>
+  </td>
+
+  <!-- Forecasting-Relevant Data -->
+  <td class="align-middle">LED Bulb 12W</td>
+  <td class="align-middle">SKU-LED12W</td>
+  <td class="align-middle">Lighting</td>
+  <td class="align-middle text-end">120</td>
+  <td class="align-middle text-end">[15, 18, 20, 22]</td>
+  <td class="align-middle text-end">5</td>
+  <td class="align-middle text-end">30</td>
+  <td class="align-middle text-end">26</td>
+  <td class="align-middle text-end">45</td>
+
+  <!-- Actions -->
+  <td class="text-center align-middle action-table-data">
+    <div class="edit-delete-action">
+      <!-- View Icon -->
+      <a class="me-2 p-2" href="javascript:void(0);">
+        <i class="bi bi-eye"></i>
+      </a>
+
+      <!-- Edit Icon -->
+      <a class="me-2 p-2" data-bs-toggle="modal" data-bs-target="#edit-item">
+        <i class="bi bi-pencil-square"></i>
+      </a>
+
+      <!-- Delete Icon -->
+      <a class="p-2" data-bs-toggle="modal" data-bs-target="#delete-modal" href="javascript:void(0);">
+        <i class="bi bi-trash"></i>
+      </a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <!-- Row Checkbox -->
+  <td class="text-center align-middle">
+    <label class="form-check">
+      <input type="checkbox" class="form-check-input">
+      <span class="form-check-label"></span>
+    </label>
+  </td>
+
+  <!-- Forecasting-Relevant Data -->
+  <td class="align-middle">LED Bulb 12W</td>
+  <td class="align-middle">SKU-LED12W</td>
+  <td class="align-middle">Lighting</td>
+  <td class="align-middle text-end">120</td>
+  <td class="align-middle text-end">[15, 18, 20, 22]</td>
+  <td class="align-middle text-end">5</td>
+  <td class="align-middle text-end">30</td>
+  <td class="align-middle text-end">26</td>
+  <td class="align-middle text-end">45</td>
+
+  <!-- Actions -->
+  <td class="text-center align-middle action-table-data">
+    <div class="edit-delete-action">
+      <!-- View Icon -->
+      <a class="me-2 p-2" href="javascript:void(0);">
+        <i class="bi bi-eye"></i>
+      </a>
+
+      <!-- Edit Icon -->
+      <a class="me-2 p-2" data-bs-toggle="modal" data-bs-target="#edit-item">
+        <i class="bi bi-pencil-square"></i>
+      </a>
+
+      <!-- Delete Icon -->
+      <a class="p-2" data-bs-toggle="modal" data-bs-target="#delete-modal" href="javascript:void(0);">
+        <i class="bi bi-trash"></i>
+      </a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <!-- Row Checkbox -->
+  <td class="text-center align-middle">
+    <label class="form-check">
+      <input type="checkbox" class="form-check-input">
+      <span class="form-check-label"></span>
+    </label>
+  </td>
+
+  <!-- Forecasting-Relevant Data -->
+  <td class="align-middle">LED Bulb 12W</td>
+  <td class="align-middle">SKU-LED12W</td>
+  <td class="align-middle">Lighting</td>
+  <td class="align-middle text-end">120</td>
+  <td class="align-middle text-end">[15, 18, 20, 22]</td>
+  <td class="align-middle text-end">5</td>
+  <td class="align-middle text-end">30</td>
+  <td class="align-middle text-end">26</td>
+  <td class="align-middle text-end">45</td>
+
+  <!-- Actions -->
+  <td class="text-center align-middle action-table-data">
+    <div class="edit-delete-action">
+      <!-- View Icon -->
+      <a class="me-2 p-2" href="javascript:void(0);">
+        <i class="bi bi-eye"></i>
+      </a>
+
+      <!-- Edit Icon -->
+      <a class="me-2 p-2" data-bs-toggle="modal" data-bs-target="#edit-item">
+        <i class="bi bi-pencil-square"></i>
+      </a>
+
+      <!-- Delete Icon -->
+      <a class="p-2" data-bs-toggle="modal" data-bs-target="#delete-modal" href="javascript:void(0);">
+        <i class="bi bi-trash"></i>
+      </a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <!-- Row Checkbox -->
+  <td class="text-center align-middle">
+    <label class="form-check">
+      <input type="checkbox" class="form-check-input">
+      <span class="form-check-label"></span>
+    </label>
+  </td>
+
+  <!-- Forecasting-Relevant Data -->
+  <td class="align-middle">LED Bulb 12W</td>
+  <td class="align-middle">SKU-LED12W</td>
+  <td class="align-middle">Lighting</td>
+  <td class="align-middle text-end">120</td>
+  <td class="align-middle text-end">[15, 18, 20, 22]</td>
+  <td class="align-middle text-end">5</td>
+  <td class="align-middle text-end">30</td>
+  <td class="align-middle text-end">26</td>
+  <td class="align-middle text-end">45</td>
+
+  <!-- Actions -->
+  <td class="text-center align-middle action-table-data">
+    <div class="edit-delete-action">
+      <!-- View Icon -->
+      <a class="me-2 p-2" href="javascript:void(0);">
+        <i class="bi bi-eye"></i>
+      </a>
+
+      <!-- Edit Icon -->
+      <a class="me-2 p-2" data-bs-toggle="modal" data-bs-target="#edit-item">
+        <i class="bi bi-pencil-square"></i>
+      </a>
+
+      <!-- Delete Icon -->
+      <a class="p-2" data-bs-toggle="modal" data-bs-target="#delete-modal" href="javascript:void(0);">
+        <i class="bi bi-trash"></i>
+      </a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <!-- Row Checkbox -->
+  <td class="text-center align-middle">
+    <label class="form-check">
+      <input type="checkbox" class="form-check-input">
+      <span class="form-check-label"></span>
+    </label>
+  </td>
+
+  <!-- Forecasting-Relevant Data -->
+  <td class="align-middle">LED Bulb 12W</td>
+  <td class="align-middle">SKU-LED12W</td>
+  <td class="align-middle">Lighting</td>
+  <td class="align-middle text-end">120</td>
+  <td class="align-middle text-end">[15, 18, 20, 22]</td>
+  <td class="align-middle text-end">5</td>
+  <td class="align-middle text-end">30</td>
+  <td class="align-middle text-end">26</td>
+  <td class="align-middle text-end">45</td>
+
+  <!-- Actions -->
+  <td class="text-center align-middle action-table-data">
+    <div class="edit-delete-action">
+      <!-- View Icon -->
+      <a class="me-2 p-2" href="javascript:void(0);">
+        <i class="bi bi-eye"></i>
+      </a>
+
+      <!-- Edit Icon -->
+      <a class="me-2 p-2" data-bs-toggle="modal" data-bs-target="#edit-item">
+        <i class="bi bi-pencil-square"></i>
+      </a>
+
+      <!-- Delete Icon -->
+      <a class="p-2" data-bs-toggle="modal" data-bs-target="#delete-modal" href="javascript:void(0);">
+        <i class="bi bi-trash"></i>
+      </a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <!-- Row Checkbox -->
+  <td class="text-center align-middle">
+    <label class="form-check">
+      <input type="checkbox" class="form-check-input">
+      <span class="form-check-label"></span>
+    </label>
+  </td>
+
+  <!-- Forecasting-Relevant Data -->
+  <td class="align-middle">LED Bulb 12W</td>
+  <td class="align-middle">SKU-LED12W</td>
+  <td class="align-middle">Lighting</td>
+  <td class="align-middle text-end">120</td>
+  <td class="align-middle text-end">[15, 18, 20, 22]</td>
+  <td class="align-middle text-end">5</td>
+  <td class="align-middle text-end">30</td>
+  <td class="align-middle text-end">26</td>
+  <td class="align-middle text-end">45</td>
+
+  <!-- Actions -->
+  <td class="text-center align-middle action-table-data">
+    <div class="edit-delete-action">
+      <!-- View Icon -->
+      <a class="me-2 p-2" href="javascript:void(0);">
+        <i class="bi bi-eye"></i>
+      </a>
+
+      <!-- Edit Icon -->
+      <a class="me-2 p-2" data-bs-toggle="modal" data-bs-target="#edit-item">
+        <i class="bi bi-pencil-square"></i>
+      </a>
+
+      <!-- Delete Icon -->
+      <a class="p-2" data-bs-toggle="modal" data-bs-target="#delete-modal" href="javascript:void(0);">
+        <i class="bi bi-trash"></i>
+      </a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <!-- Row Checkbox -->
+  <td class="text-center align-middle">
+    <label class="form-check">
+      <input type="checkbox" class="form-check-input">
+      <span class="form-check-label"></span>
+    </label>
+  </td>
+
+  <!-- Forecasting-Relevant Data -->
+  <td class="align-middle">LED Bulb 12W</td>
+  <td class="align-middle">SKU-LED12W</td>
+  <td class="align-middle">Lighting</td>
+  <td class="align-middle text-end">120</td>
+  <td class="align-middle text-end">[15, 18, 20, 22]</td>
+  <td class="align-middle text-end">5</td>
+  <td class="align-middle text-end">30</td>
+  <td class="align-middle text-end">26</td>
+  <td class="align-middle text-end">45</td>
+
+  <!-- Actions -->
+  <td class="text-center align-middle action-table-data">
+    <div class="edit-delete-action">
+      <!-- View Icon -->
+      <a class="me-2 p-2" href="javascript:void(0);">
+        <i class="bi bi-eye"></i>
+      </a>
+
+      <!-- Edit Icon -->
+      <a class="me-2 p-2" data-bs-toggle="modal" data-bs-target="#edit-item">
+        <i class="bi bi-pencil-square"></i>
+      </a>
+
+      <!-- Delete Icon -->
+      <a class="p-2" data-bs-toggle="modal" data-bs-target="#delete-modal" href="javascript:void(0);">
+        <i class="bi bi-trash"></i>
+      </a>
+    </div>
+  </td>
+</tr>
+
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+				</div>
+				<!-- /product list -->
+			</div>
