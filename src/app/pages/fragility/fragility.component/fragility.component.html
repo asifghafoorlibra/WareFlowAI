@@ -1,0 +1,99 @@
+<div class="content">
+  <div class="page-header transfer">
+    <div class="add-item d-flex">
+      <div class="page-title">
+        <h4 class="fw-bold">Detect Fragility</h4>
+        <h6>Detect the fragility of Image</h6>
+      </div>
+    </div>
+
+    <ul class="table-top-head">
+      <li><a data-bs-toggle="tooltip" title="Pdf"><img src="assets/img/icons/pdf.svg" alt="img"></a></li>
+      <li><a data-bs-toggle="tooltip" title="Excel"><img src="assets/img/icons/excel.svg" alt="img"></a></li>
+      <li><a data-bs-toggle="tooltip" title="Refresh"><i data-feather="rotate-ccw"></i></a></li>
+      <li><a data-bs-toggle="tooltip" title="Collapse" id="collapse-header"><i class="ti ti-chevron-up"></i></a></li>
+    </ul>
+
+    <div class="d-flex purchase-pg-btn">
+      <div class="page-btn">
+        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-purchase">
+          <i data-feather="plus-circle" class="me-1"></i>Add Purchase
+        </a>
+      </div>
+      <div class="page-btn import">
+        <a href="#" class="btn btn-secondary color" data-bs-toggle="modal" data-bs-target="#view-notes">
+          <i data-feather="download" class="me-2"></i>Import Purchase
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+      <div class="input-group mb-3 w-50">
+        <span class="input-group-text bg-white border-end-0">
+          <i class="bi bi-image"></i>
+        </span>
+        <input
+          type="file"
+          id="imageUpload"
+          class="form-control border-start-0"
+          accept="image/*"
+          (change)="previewImage($event)"
+        >
+
+        <!-- 🔵 Upload Button -->
+        <button
+          class="btn btn-primary ms-2"
+          type="button"
+          (click)="handleUpload()"
+          [disabled]="!selectedFile || isUploading"
+        >
+          <i class="bi bi-upload me-1"></i>{{ isUploading ? 'Uploading...' : 'Upload' }}
+        </button>
+
+        <!-- 🟢 Detect Button -->
+        <button
+          class="btn btn-info ms-2"
+          type="button"
+          (click)="handleDetect()"
+          [disabled]="!uploadedFilename || isDetecting"
+        >
+          <i class="bi bi-search me-1"></i>{{ isDetecting ? 'Detecting...' : 'Detect' }}
+        </button>
+      </div>
+    </div>
+
+    <div class="card-body p-0">
+      <!-- ✅ Image Preview -->
+      <div *ngIf="showPreview" class="text-center p-3">
+        <h6 class="fw-bold mb-2">Selected Image Preview</h6>
+        <img
+          [src]="imageSrc"
+          alt="Preview"
+          class="img-fluid rounded shadow border"
+          style="max-height: 300px; border: 2px solid #007bff;"
+        >
+      </div>
+
+      <!-- ✅ Detection Result -->
+      <div *ngIf="detectionLabel" class="text-center p-3">
+        <h6 class="fw-bold mb-2">Prediction Result</h6>
+        <p class="alert alert-info d-inline-block px-4 py-2">
+          {{ detectionLabel }} ({{ detectionConfidence }}% confidence)
+        </p>
+      </div>
+
+      <!-- ✅ Grad-CAM Visualization -->
+      <div *ngIf="gradcamImage" class="text-center p-3">
+        <h6 class="fw-bold mb-2">Grad-CAM Visualization</h6>
+        <img
+          [src]="gradcamImage"
+          alt="Grad-CAM"
+          class="img-fluid rounded shadow border"
+          style="max-height: 300px; border: 2px solid #17a2b8;"
+        >
+      </div>
+    </div>
+  </div>
+</div>
